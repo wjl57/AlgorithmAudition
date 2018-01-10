@@ -16,5 +16,6 @@ print("SOURCE: " + str(source))
 print("DESTINATION: " + str(destination))
 
 shortest_path = SearchMethods.a_star_search(source, destination, GridNode.euclidean_distance)
+print(len(shortest_path))
 for node in shortest_path:
     print(node)
