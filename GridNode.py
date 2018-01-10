@@ -28,6 +28,10 @@ class GridNode:
         return hash(str(self.x) + " " + str(self.y))
 
     @staticmethod
+    def no_heuristic(node1, node2):
+        return 0
+
+    @staticmethod
     def manhattan_distance(node1, node2):
         return abs(node1.x - node2.x) + abs(node1.y - node2.y)
 

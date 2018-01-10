@@ -26,13 +26,14 @@ def a_star_search(source, destination, heuristic_function):
         # Get the first node from the priority queue
         (cost, current) = heappop(frontier)
         if current == destination:
-            return reconstruct_path(came_from, current, deque())
+            return reconstruct_path(came_from, current, deque()), visited, total_cost
 
         # If we've seen the node before, move on
         if current in visited:
             continue
 
-        # Otherwise try to expand the neighbors
+        # Otherwise, add to visited and try to expand the neighbors
+        visited.add(current)
         for neighbor in current.neighbors:
             if neighbor not in visited:
                 new_source_cost = cost_from_source[current] + current.neighbors[neighbor]
