@@ -26,7 +26,7 @@ def a_star_search(source, destination, heuristic_function):
         # Get the first node from the priority queue
         (cost, current) = heappop(frontier)
         if current == destination:
-            return reconstruct_path(came_from, current, deque()), visited, total_cost
+            return reconstruct_path(came_from, current), visited, total_cost
 
         # If we've seen the node before, move on
         if current in visited:
@@ -50,12 +50,18 @@ def a_star_search(source, destination, heuristic_function):
     raise Exception("No valid path to destination")
 
 
-def reconstruct_path(came_from, node, path):
+def reconstruct_path(came_from, node):
+    d = deque()
+    d.appendleft(node)
+    return reconstruct_path_inner(came_from, node, d)
+
+
+def reconstruct_path_inner(came_from, node, path):
     if node not in came_from:
         return path
     prev_node = came_from[node]
     path.appendleft(prev_node)
     del came_from[node]
-    return reconstruct_path(came_from, prev_node, path)
+    return reconstruct_path_inner(came_from, prev_node, path)
 
 

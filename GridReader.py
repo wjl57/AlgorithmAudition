@@ -15,7 +15,7 @@ class GridReader:
         self.grid_nodes = []
         self.node_type_map = {
             '.': NodeTypes.NORMAL,
-            'W': NodeTypes.WALL,
+            '#': NodeTypes.WALL,
             'S': NodeTypes.SOURCE,
             'D': NodeTypes.DESTINATION
         }
