@@ -1,12 +1,9 @@
 from collections import defaultdict, deque
 from heapq import heappush, heappop
 
-import math
-
-from GridNode import GridNode
-
 
 def a_star_search(source, destination, heuristic_function):
+    # The nodes that have been visited already
     visited = set()
     # A priority queue containing tuples of (cost, node) that are not evaluated yet.
     # Initially, only the start node is known.
